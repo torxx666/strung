@@ -1,0 +1,15 @@
+[package]
+name = "strung"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+clap = { version = "4.4", features = ["derive"] }
+uuid = { version = "1.6", features = ["v4"] }
+serde = { version = "1.0", features = ["derive"] }
+toml = "0.8"
+regex = "1.10"
+rayon = "1.8"
+memmap2 = "0.9"
+object = "0.32"
+base64 = "0.22"

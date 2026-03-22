@@ -1,0 +1,12 @@
+This is a normal text file.
+It contains some useful strings like "API_KEY_12345" and "DATABASE_URL".
+It also has some junk:
+A1N
+Hhm"k
++$()
+%ebW
+{ ~q
+TE<Q
+:!\]]y
+Wait, those should be filtered out by strung but kept by strings.
+End of file.

@@ -1,0 +1,28 @@
+# PRD: Strung - Intelligent String Extraction Tool
+
+## Goal
+Create a Rust version of the `strings` command, but with smarter filtering to exclude "junk" sequences that often appear in binary files.
+
+## Requirements
+1.  **Rust Implementation**: The application must be written in Rust.
+2.  **Dockerized**: The project should include a `Dockerfile` for building and testing. The user will extract the binary from the container.
+3.  **Basic strings functionality**: Find and print sequences of printable characters (sequences of at least 4 characters by default).
+4.  **Intelligent Filtering**: Implement heuristics to filter out unhelpful junk strings (e.g., short, high-entropy or mostly-punctuation strings).
+5.  **Logging Rejected Strings**:
+    *   By default, strings that `strings` would include but `strung` rejects must be saved to `/tmp/drop_<uuid>.txt`.
+    *   The UUID should be unique per execution.
+    *   Use a `-s` (silent) switch to disable this logging.
+6.  **Test Environment**: A directory named `tests/samples/` should be prepared with various file types (binary, text, mixed) to demonstrate the extraction quality.
+
+## Heuristics (Proposals)
+- **Minimum Length**: Same as strings (default 4).
+- **Character Composition**: Reject strings with >3 consecutive punctuation marks.
+- **Alphabetic Ratio**: Require a certain percentage of letters vs. symbols.
+- **Entropy Analysis**: High-entropy strings are likely random bytes and should be dropped.
+
+## CLI Usage
+```bash
+strung [OPTIONS] <FILE>
+```
+- `-s`: Silent mode (disable `/tmp/drop_<uuid>.txt`).
+- Other flags standard to `strings` can be added later (e.g., `-n <length>`).
