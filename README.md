@@ -33,12 +33,19 @@ It doesn't just extract printable characters—it uses linguistic analysis, entr
 
 ## 🛠 Installation
 
-### 1. Using Cargo (Recommended)
+### 1. Download Binaries
+Download the pre-compiled binary for your architecture from the [Releases](https://github.com/torxx666/strung/releases) page.
+
+1.  Download the ZIP/Tarball.
+2.  Extract the `strung` binary.
+3.  Move it to your PATH (e.g., `/usr/local/bin`).
+
+### 2. Using Cargo (Recommended)
 ```bash
 cargo install --path .
 ```
 
-### 2. Using Docker
+### 3. Using Docker
 ```bash
 docker build -t strung-app .
 # Alias it for convenience
