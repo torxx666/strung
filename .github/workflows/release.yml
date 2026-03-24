@@ -27,6 +27,9 @@ jobs:
     name: Publish for ${{ matrix.target }}
     needs: create-release
     runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash  # ✅ Force bash partout pour éviter les erreurs PowerShell
     strategy:
       fail-fast: false
       matrix:
@@ -59,8 +62,8 @@ jobs:
       - name: Package Binary (Windows)
         if: runner.os == 'Windows'
         run: |
-          cd target/${{ matrix.target }}/release
-          7z a ../../../strung-${{ matrix.target }}.zip strung.exe
+          # ✅ On utilise une syntaxe compatible bash même sur Windows
+          7z a strung-${{ matrix.target }}.zip ./target/${{ matrix.target }}/release/strung.exe
 
       - name: Upload Binary to Release
         env:
